@@ -3,6 +3,8 @@ package com.vision.telecount.com.vision.telecount.entity;
 import java.util.Objects;
 
 public class Payment {
+
+    private String label;
     private User user;
     private Group group;
     private int cash;
@@ -15,6 +17,14 @@ public class Payment {
         this.user = user;
         this.group = group;
         this.cash = cash;
+    }
+
+    public String getLabel() {
+        return label;
+    }
+
+    public void setLabel(String label) {
+        this.label = label;
     }
 
     public User getUser() {

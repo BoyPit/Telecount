@@ -22,6 +22,8 @@ public class Group {
 
     public void addUser(User u){
         users.add(u);
+        if (!u.getGroups().contains(this))
+            u.addGroup(this);
     }
 
     public void addPayment(Payment p){
