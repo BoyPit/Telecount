@@ -10,12 +10,20 @@ public class User {
     private String firstName;
     private List<Group> groups;
 
+    public User(){
+
+    }
+
     public User(String email, String password, String lastName, String firstName, List<Group> groups) {
         this.email = email;
         this.password = password;
         this.lastName = lastName;
         this.firstName = firstName;
         this.groups = groups;
+    }
+
+    public void addGroup(Group g){
+        groups.add(g);
     }
 
     public String getEmail() {

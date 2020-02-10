@@ -9,11 +9,23 @@ public class Group {
     private List<User> users;
     private List<Payment> payments;
 
+    public Group(){
+
+    }
+
     public Group(String label, int fund, List<User> users, List<Payment> payments) {
         this.label = label;
         this.fund = fund;
         this.users = users;
         this.payments = payments;
+    }
+
+    public void addUser(User u){
+        users.add(u);
+    }
+
+    public void addPayment(Payment p){
+        payments.add(p);
     }
 
     public String getLabel() {

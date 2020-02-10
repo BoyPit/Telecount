@@ -7,6 +7,10 @@ public class Payment {
     private Group group;
     private int cash;
 
+    public Payment(){
+
+    }
+
     public Payment(User user, Group group, int cash) {
         this.user = user;
         this.group = group;
