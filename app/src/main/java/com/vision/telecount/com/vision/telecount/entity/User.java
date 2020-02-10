@@ -24,6 +24,8 @@ public class User {
 
     public void addGroup(Group g){
         groups.add(g);
+        if (!g.getUsers().contains(this))
+            g.addUser(this);
     }
 
     public String getEmail() {
