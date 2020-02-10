@@ -24,8 +24,11 @@ public class Group {
         users.add(u);
     }
 
-    public void addPayment(Payment p){
+    //
+    public void addPayment(int cash, User user){
+        Payment p = new Payment(user, this, cash);
         payments.add(p);
+        fund += cash;
     }
 
     public String getLabel() {
