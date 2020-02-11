@@ -6,12 +6,15 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Window;
 
 import com.google.android.material.tabs.TabLayout;
+import com.vision.telecount.com.vision.telecount.entity.User;
 
+import java.nio.BufferUnderflowException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +22,8 @@ public class MainActivity extends AppCompatActivity implements LogFragment.OnFra
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
+
+    ArrayList<User> users = new ArrayList<User>();
 
 
     @Override
@@ -31,6 +36,18 @@ public class MainActivity extends AppCompatActivity implements LogFragment.OnFra
 
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
+
+        Intent intent = getIntent();
+        users = (ArrayList<User>) intent.getExtras().get("users");
+
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("users", users);
+
+        LogFragment logFragment = new LogFragment();
+        logFragment.setArguments(bundle);
+
+        RegisterFragment registerFragment = new RegisterFragment();
+        registerFragment.setArguments(bundle);
     }
 
     private void setViewPager(ViewPager viewPager) {

@@ -1,6 +1,7 @@
 package com.vision.telecount;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -9,6 +10,11 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+
+import com.vision.telecount.com.vision.telecount.entity.User;
+
+import java.util.ArrayList;
 
 
 /**
@@ -28,6 +34,8 @@ public class LogFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private ArrayList<User> users;
 
     private OnFragmentInteractionListener mListener;
 
@@ -66,6 +74,20 @@ public class LogFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_log, container, false);
+
+        // Récupération des données via Intent
+        users = (ArrayList<User>) getArguments().get("users");
+
+        // Bouton de connexion de l'utilisateur
+        Button button = (Button) rootView.findViewById(R.id.material_button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity().getBaseContext(), MainActivity.class);
+                intent.putExtra("users", users);
+                getActivity().startActivity(intent);
+            }
+        });
 
         return rootView;
     }

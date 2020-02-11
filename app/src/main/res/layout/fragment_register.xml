@@ -54,6 +54,7 @@
             android:hint="Prenom">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/first_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
@@ -70,6 +71,7 @@
             android:hint="Nom">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/last_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
@@ -88,6 +90,7 @@
             android:hint="Email">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
@@ -105,6 +108,7 @@
             android:hint="Password">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
         </com.google.android.material.textfield.TextInputLayout>
