@@ -6,6 +6,7 @@ import java.util.Objects;
 
 public class Group {
     private String label;
+    private String description;
     private int fund;
     private List<User> users;
     private List<Payment> payments;
@@ -14,11 +15,12 @@ public class Group {
 
     }
 
-    public Group(String label, int fund, List<User> users, List<Payment> payments) {
+    public Group(String label, int fund, List<User> users, List<Payment> payments, String description) {
         this.label = label;
         this.fund = fund;
         this.users = users;
         this.payments = payments;
+        this.description = description;
     }
 
     public void addUser(User u){
@@ -73,6 +75,14 @@ public class Group {
 
     public void setPayments(List<Payment> payments) {
         this.payments = payments;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     @Override

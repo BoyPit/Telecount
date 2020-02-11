@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.android.material.textfield.TextInputLayout;
 import com.vision.telecount.com.vision.telecount.entity.Group;
 import com.vision.telecount.com.vision.telecount.entity.User;
 
@@ -38,7 +39,7 @@ public class RegisterFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private ArrayList<User> users;
+    private ArrayList<User> users = new ArrayList<>();
 
     private OnFragmentInteractionListener mListener;
 
@@ -80,7 +81,15 @@ public class RegisterFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_register, container, false);
 
         // Récupération des données via Intent
-        users = (ArrayList<User>) getArguments().get("users");
+        if(getArguments() != null) {
+            users = (ArrayList<User>) getArguments().get("users");
+        }
+
+        final TextInputLayout emailLayout = (TextInputLayout)rootView.findViewById(R.id.email);
+        final TextInputLayout passwordLayout = (TextInputLayout)rootView.findViewById(R.id.password);
+        final TextInputLayout firstNameLayout = (TextInputLayout)rootView.findViewById(R.id.first_name);
+        final TextInputLayout lastNameLayout = (TextInputLayout)rootView.findViewById(R.id.last_name);
+
 
         // Bouton de connexion de l'utilisateur
         Button button = (Button) rootView.findViewById(R.id.material_button);
@@ -88,10 +97,10 @@ public class RegisterFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 // Ajout du nouvel utilisateur
-                String email = ((EditText)view.findViewById(R.id.email)).getText().toString();
-                String password = ((EditText)view.findViewById(R.id.password)).getText().toString();
-                String firstName = ((EditText)view.findViewById(R.id.first_name)).getText().toString();
-                String lastName = ((EditText)view.findViewById(R.id.last_name)).getText().toString();
+                String email = emailLayout.getEditText().getText().toString();
+                String password = passwordLayout.getEditText().getText().toString();
+                String firstName = firstNameLayout.getEditText().getText().toString();
+                String lastName = lastNameLayout.getEditText().getText().toString();
 
                 User newUser = new User(email, password, firstName, lastName, new ArrayList<Group>());
                 users.add(newUser);

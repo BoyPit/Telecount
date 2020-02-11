@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity implements LogFragment.OnFra
     private TabLayout tabLayout;
     private ViewPager viewPager;
 
-    ArrayList<User> users = new ArrayList<User>();
+    ArrayList<User> users = new ArrayList<>();
 
 
     @Override
@@ -40,7 +40,10 @@ public class MainActivity extends AppCompatActivity implements LogFragment.OnFra
         tabLayout.setupWithViewPager(viewPager);
 
         Intent intent = getIntent();
-        users = (ArrayList<User>) intent.getExtras().get("users");
+
+        if(intent != null && intent.getExtras() != null && intent.getExtras().get("users") != null) {
+            users = (ArrayList<User>) intent.getExtras().get("users");
+        }
 
         Bundle bundle = new Bundle();
         bundle.putSerializable("users", users);
@@ -50,6 +53,7 @@ public class MainActivity extends AppCompatActivity implements LogFragment.OnFra
 
         RegisterFragment registerFragment = new RegisterFragment();
         registerFragment.setArguments(bundle);
+
     }
 
     private void setViewPager(ViewPager viewPager) {

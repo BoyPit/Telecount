@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.vision.telecount.com.vision.telecount.activity.GroupActivity;
 import com.vision.telecount.com.vision.telecount.entity.User;
 
 import java.util.ArrayList;
@@ -35,7 +36,7 @@ public class LogFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private ArrayList<User> users;
+    private ArrayList<User> users = new ArrayList<>();
 
     private OnFragmentInteractionListener mListener;
 
@@ -76,14 +77,16 @@ public class LogFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_log, container, false);
 
         // Récupération des données via Intent
-        users = (ArrayList<User>) getArguments().get("users");
+        if(getArguments() != null) {
+            users = (ArrayList<User>) getArguments().get("users");
+        }
 
         // Bouton de connexion de l'utilisateur
         Button button = (Button) rootView.findViewById(R.id.material_button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity().getBaseContext(), MainActivity.class);
+                Intent intent = new Intent(getActivity().getBaseContext(), GroupActivity.class);
                 intent.putExtra("users", users);
                 getActivity().startActivity(intent);
             }
