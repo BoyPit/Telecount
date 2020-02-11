@@ -8,7 +8,7 @@
     android:layout_gravity="start"
 
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".com.vision.telecount.activity.GroupActivity">
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
