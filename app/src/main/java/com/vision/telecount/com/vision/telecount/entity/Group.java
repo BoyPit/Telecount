@@ -1,5 +1,6 @@
 package com.vision.telecount.com.vision.telecount.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -56,6 +57,15 @@ public class Group {
 
     public List<Payment> getPayments() {
         return payments;
+    }
+
+    public List<Payment> getPayments(User u) {
+        List<Payment> userPayments = new ArrayList<>();
+        for(Payment p: payments)
+        {
+            userPayments.add(p);
+        }
+        return userPayments;
     }
 
     public void setPayments(List<Payment> payments) {
