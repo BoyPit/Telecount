@@ -13,6 +13,8 @@
         <item name="colorPrimaryVariant">@color/colorPrimary</item>
         <item name="colorSecondaryVariant">@color/colorSecondary</item>
 
+
+
         <item name="textAppearanceHeadline1">@style/TextAppearance.MaterialComponents.Headline1</item>
         <item name="textAppearanceHeadline2">@style/TextAppearance.MaterialComponents.Headline2</item>
         <item name="textAppearanceHeadline3">@style/TextAppearance.MaterialComponents.Headline3</item>
@@ -27,6 +29,8 @@
         <item name="textAppearanceButton">@style/TextAppearance.MaterialComponents.Button</item>
         <item name="textAppearanceOverline">@style/TextAppearance.MaterialComponents.Overline</item>
     </style>
+
+
 
 
 
