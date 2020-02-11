@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="start"
+
     android:orientation="vertical"
     tools:context=".MainActivity">
 
@@ -15,13 +16,52 @@
         android:layout_marginLeft="@dimen/mtrl_card_spacing"
         android:layout_marginTop="@dimen/mtrl_card_spacing"
         android:layout_marginRight="@dimen/mtrl_card_spacing"
+        app:cardCornerRadius="10dp"
 
         android:minHeight="100dp">
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+
+            android:orientation="vertical"
+                >
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="Test"/>
+            android:layout_margin="10dp"
+            android:textSize="30sp"
+
+            android:text="Voyage "/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:textSize="15sp"
+
+            android:text="Vestibulum molestie volutpat lectus sollicitudin cursus. Praesent ut elit non nisi porta pretium id vel eros. Sed eleifend orci vel.
+
+"/>
+        </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- Main content -->
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floating_action_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:layout_margin="20dp"
+            app:srcCompat="@drawable/ic_add_circle_blue_a100_24dp"/>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </LinearLayout>
