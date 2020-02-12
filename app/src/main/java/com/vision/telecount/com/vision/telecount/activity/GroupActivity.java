@@ -91,7 +91,9 @@ public class GroupActivity extends AppCompatActivity {
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(GroupActivity.this, AddGroupActivity.class));
+                Intent intent = new Intent(getBaseContext(), AddGroupActivity.class);
+                intent.putExtra("users", (Serializable) users);
+                startActivity(intent);
 
             }
         });
