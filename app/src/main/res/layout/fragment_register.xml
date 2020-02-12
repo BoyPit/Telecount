@@ -8,131 +8,141 @@
     tools:context=".RegisterFragment">
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:elevation="2dp"
-
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_margin="20dp"
-        android:gravity="center"
-
-        android:background="#19ffffff">
-
-        <ImageView
-            android:layout_width="186dp"
-            android:layout_height="150dp"
-            android:contentDescription="Logo Tse"
-
-            android:src="@drawable/logotse" />
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="403dp"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/mtrl_card_spacing"
+        android:layout_marginTop="@dimen/mtrl_card_spacing"
+        android:layout_marginRight="@dimen/mtrl_card_spacing"
+        app:cardBackgroundColor="#10ffffff"
+        app:cardCornerRadius="15dp">
 
         <LinearLayout
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:elevation="2dp"
             android:gravity="center"
-            android:layout_margin="10dp"
-            android:layout_height="match_parent">
-            <TextView
-                android:id="@+id/text_view_id"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="186dp"
+                android:layout_height="150dp"
+                android:contentDescription="Logo Tse"
+
+                android:src="@drawable/logotse" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/text_view_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Register" />
+            </LinearLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:id="@+id/first_name"
+                android:layout_width="match_parent"
+
                 android:layout_height="wrap_content"
-                android:gravity="center"
+                android:layout_margin="10dp"
+                android:hint="Prenom"
+
+                app:startIconCheckable="true"
+                app:startIconDrawable="@drawable/ic_perm_identity_white_24dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:id="@+id/last_name"
                 android:layout_width="match_parent"
-                android:text="Register" />
-        </LinearLayout>
+
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:hint="Nom"
+
+                app:startIconCheckable="true"
+                app:startIconDrawable="@drawable/ic_perm_identity_white_24dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
 
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:layout_margin="10dp"
-            app:startIconCheckable="true"
-            app:startIconDrawable="@drawable/ic_lock_outline_white_24dp"
-
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:hint="Prenom">
-
-            <com.google.android.material.textfield.TextInputEditText
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:id="@+id/email"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
 
-        </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:hint="Email"
 
-            android:layout_margin="10dp"
-            app:startIconCheckable="true"
-            app:startIconDrawable="@drawable/ic_lock_outline_white_24dp"
+                app:startIconCheckable="true"
+                app:startIconDrawable="@drawable/ic_email_white_24dp">
 
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:hint="Nom">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
-            <com.google.android.material.textfield.TextInputEditText
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:id="@+id/password"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
 
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:hint="Password"
 
+                app:startIconCheckable="true"
+                app:startIconDrawable="@drawable/ic_lock_outline_white_24dp">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:layout_margin="10dp"
-            app:startIconCheckable="true"
-            app:startIconDrawable="@drawable/ic_lock_outline_white_24dp"
-
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:hint="Email">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:layout_margin="10dp"
-            app:startIconCheckable="true"
-            app:startIconDrawable="@drawable/ic_lock_outline_white_24dp"
-
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:hint="Password">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
 
 
-        <GridLayout
+            <GridLayout
                 android:id="@+id/grid"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:padding="16dp"
                 android:clipToPadding="false"
-                android:columnCount="2">
+                android:columnCount="2"
+                android:padding="16dp">
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/material_button"
                     android:layout_width="wrap_content"
-                    android:layout_gravity="center"
                     android:layout_height="wrap_content"
-                    android:text="Inscription"/>
+                    android:layout_gravity="center"
+                    android:text="Inscription" />
 
-                <Space/>
+                <Space />
             </GridLayout>
 
 
-    </LinearLayout>
+        </LinearLayout>
 
 
-
+    </com.google.android.material.card.MaterialCardView>
 
 </FrameLayout>

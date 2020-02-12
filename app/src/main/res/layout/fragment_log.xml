@@ -7,7 +7,16 @@
 
     tools:context=".LogFragment">
 
-
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/mtrl_card_spacing"
+        android:layout_marginTop="@dimen/mtrl_card_spacing"
+        android:layout_marginRight="@dimen/mtrl_card_spacing"
+        app:cardCornerRadius="15dp"
+        android:layout_gravity="center"
+        app:cardBackgroundColor="#10ffffff"
+        >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,10 +24,9 @@
 
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_margin="20dp"
         android:gravity="center"
 
-        android:background="#10ffffff">
+       >
 
         <ImageView
             android:layout_width="186dp"
@@ -41,6 +49,7 @@
         </LinearLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
@@ -55,6 +64,7 @@
 
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
@@ -93,6 +103,6 @@
     </LinearLayout>
 
 
-
+</com.google.android.material.card.MaterialCardView>
 
 </FrameLayout>

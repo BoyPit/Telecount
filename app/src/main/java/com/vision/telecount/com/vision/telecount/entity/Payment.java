@@ -1,8 +1,9 @@
 package com.vision.telecount.com.vision.telecount.entity;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Payment {
+public class Payment implements Serializable {
 
     private String label;
     private User user;
@@ -10,7 +11,9 @@ public class Payment {
     private int cash;
 
     public Payment(){
-
+        this.user = new User();
+        this.group = new Group();
+        this.cash = 0;
     }
 
     public Payment(User user, Group group, int cash) {

@@ -1,10 +1,11 @@
 package com.vision.telecount.com.vision.telecount.entity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class Group {
+public class Group implements Serializable {
     private String label;
     private String description;
     private int fund;
@@ -12,7 +13,11 @@ public class Group {
     private List<Payment> payments;
 
     public Group(){
-
+        this.label = "";
+        this.fund = 0;
+        this.users = new ArrayList<>();
+        this.payments = new ArrayList<>();
+        this.description = "";
     }
 
     public Group(String label, String description, int fund, List<User> users, List<Payment> payments) {
@@ -29,8 +34,11 @@ public class Group {
             u.addGroup(this);
     }
 
-    public void addPayment(Payment p){
+    //
+    public void addPayment(int cash, User user){
+        Payment p = new Payment(user, this, cash);
         payments.add(p);
+        fund += cash;
     }
 
     public String getLabel() {

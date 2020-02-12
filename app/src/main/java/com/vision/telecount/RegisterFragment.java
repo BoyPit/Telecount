@@ -1,14 +1,29 @@
 package com.vision.telecount;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.viewpager.widget.ViewPager;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+
+import com.google.android.material.textfield.TextInputLayout;
+import com.vision.telecount.com.vision.telecount.entity.Group;
+import com.vision.telecount.com.vision.telecount.entity.User;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -28,6 +43,8 @@ public class RegisterFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private ArrayList<User> users;
 
     private OnFragmentInteractionListener mListener;
 
@@ -66,7 +83,57 @@ public class RegisterFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_register, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_register, container, false);
+
+        // Récupération des données via Intent
+        /*
+        if(getArguments() != null && getArguments().getSerializable("users") != null) {
+            users = (ArrayList<User>) getArguments().getSerializable("users");
+        }
+         */
+
+        final TextInputLayout emailLayout = (TextInputLayout)rootView.findViewById(R.id.email);
+        final TextInputLayout passwordLayout = (TextInputLayout)rootView.findViewById(R.id.password);
+        final TextInputLayout firstNameLayout = (TextInputLayout)rootView.findViewById(R.id.first_name);
+        final TextInputLayout lastNameLayout = (TextInputLayout)rootView.findViewById(R.id.last_name);
+
+
+        // Bouton de connexion de l'utilisateur
+        Button button = (Button) rootView.findViewById(R.id.material_button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Ajout du nouvel utilisateur
+                String email = emailLayout.getEditText().getText().toString();
+                String password = passwordLayout.getEditText().getText().toString();
+                String firstName = firstNameLayout.getEditText().getText().toString();
+                String lastName = lastNameLayout.getEditText().getText().toString();
+
+                User newUser = new User(email, password, lastName, firstName, new ArrayList<Group>());
+                users.add(newUser);
+
+                emailLayout.getEditText().setText("");
+                passwordLayout.getEditText().setText("");
+                firstNameLayout.getEditText().setText("");
+                lastNameLayout.getEditText().setText("");
+
+                /*
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("users", users);
+
+                ViewPager viewPager = (ViewPager) view.findViewById(R.id.pager);
+
+                Fragment logFragment = getActivity().getSupportFragmentManager().getFragments().get(0);
+                logFragment.setArguments(bundle);
+
+                Intent intent = new Intent(getActivity().getBaseContext(), MainActivity.class);
+                intent.putExtra("users", users);
+                startActivity(intent);
+                */
+            }
+        });
+
+        return rootView;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -106,5 +173,13 @@ public class RegisterFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    public ArrayList<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(ArrayList<User> users) {
+        this.users = users;
     }
 }
