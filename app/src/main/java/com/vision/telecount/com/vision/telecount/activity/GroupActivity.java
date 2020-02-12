@@ -75,7 +75,7 @@ public class GroupActivity extends AppCompatActivity {
         LinearLayout mainL;
 
 
-        MaterialCardView crd =    (MaterialCardView) findViewById(R.id.card1);
+     /*   MaterialCardView crd =    (MaterialCardView) findViewById(R.id.card1);
 
         crd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,7 +85,7 @@ public class GroupActivity extends AppCompatActivity {
             }
         });
 
-
+*/
 
         FloatingActionButton bt =    (FloatingActionButton) findViewById(R.id.floating_action_button);
         bt.setOnClickListener(new View.OnClickListener() {
