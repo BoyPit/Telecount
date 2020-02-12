@@ -26,20 +26,10 @@ public class AddGroupActivity extends AppCompatActivity {
     ListView list;
     private ArrayList<User> users;
 
-    private AlertDialog.Builder alert;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.addgroup);
-
-        alert = new AlertDialog.Builder(getActivity());
-        alert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
-                dialog.dismiss();
-            }
-        });
-        alert.setCancelable(false);
 
         Intent intent = getIntent();
 
