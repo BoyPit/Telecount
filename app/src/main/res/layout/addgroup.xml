@@ -15,10 +15,8 @@
         android:layout_marginRight="@dimen/mtrl_card_spacing"
         app:cardCornerRadius="15dp"
         >
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        <LinearLayout
             android:orientation="vertical" android:layout_width="match_parent"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"
             tools:context=".com.vision.telecount.activity.AddGroupActivity"
 
             android:layout_height="match_parent">
@@ -30,7 +28,7 @@
         android:layout_width="match_parent"
         android:textSize="32sp"
 
-        android:text="Nouveau Groupe" />
+        android:text="NOUVEAU GROUPE" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
@@ -38,7 +36,7 @@
 
         android:layout_margin="10dp"
         app:startIconCheckable="true"
-        app:startIconDrawable="@drawable/ic_lock_outline_white_24dp"
+        app:startIconDrawable="@drawable/ic_title_white_24dp"
 
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:hint="Titre">
@@ -50,17 +48,20 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
 
         android:layout_margin="10dp"
         app:startIconCheckable="true"
-        app:startIconDrawable="@drawable/ic_lock_outline_white_24dp"
+        app:startIconDrawable="@drawable/ic_description_white_24dp"
 
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:hint="Description">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="106dp"
+
+            android:inputType="textMultiLine" />
     </com.google.android.material.textfield.TextInputLayout>
             <RadioGroup
                 android:layout_width="wrap_content"
