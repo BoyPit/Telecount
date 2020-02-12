@@ -43,6 +43,10 @@ public class MainActivity extends AppCompatActivity implements LogFragment.OnFra
         User u2 = new User("arthur.pinier@gmail.com", "password", "Pinier", "Arthur", new ArrayList<Group>());
         User u3 = new User("theo.dupuis@gmail.com", "password", "Dupuis", "Theo", new ArrayList<Group>());
 
+        g1.addPayment(10,u1,"Pizza Pour Arthur");
+        g1.addPayment(50,u1,"Location Pour Theo");
+        g1.addPayment(100, u2, "Alcool pour Yann");
+
         u1.addGroup(g1);
         u1.addGroup(g2);
         u2.addGroup(g1);

@@ -35,8 +35,9 @@ public class Group implements Serializable {
     }
 
     //
-    public void addPayment(int cash, User user){
+    public void addPayment(int cash, User user, String label){
         Payment p = new Payment(user, this, cash);
+        p.setLabel(label);
         payments.add(p);
         fund += cash;
     }

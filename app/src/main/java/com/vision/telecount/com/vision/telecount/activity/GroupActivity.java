@@ -74,7 +74,13 @@ public class GroupActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                startActivity(new Intent(GroupActivity.this, DisplayGroupActivity.class));
+                Intent intent = new Intent(getBaseContext(), DisplayGroupActivity.class);
+                intent.putExtra("users", (Serializable) users);
+                intent.putExtra("currentUser", currentUser);
+                intent.putExtra("currentGroup",currentUser.getGroups().get(position) );
+
+                startActivity(intent);
+                //startActivity(new Intent(GroupActivity.this, DisplayGroupActivity.class));
 
                 // Toast.makeText(GroupActivity.this, "You Clicked at " + user.getGroups().get(position), Toast.LENGTH_SHORT).show();
             }
