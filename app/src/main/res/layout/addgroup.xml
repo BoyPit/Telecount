@@ -63,30 +63,31 @@
 
             android:inputType="textMultiLine" />
     </com.google.android.material.textfield.TextInputLayout>
-            <RadioGroup
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checkedButton="@+id/first"
                 android:layout_margin="10dp"
 
                 android:orientation="vertical">
-                <RadioButton
+                <CheckBox
                     android:id="@+id/first"
 
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Yann Moulaire"/>
-                <RadioButton
+                <CheckBox
                     android:id="@+id/second"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Theo Dupuis"/>
-                <RadioButton
+                <CheckBox
                     android:id="@+id/third"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Arthur Pinier-Rafer"/>
-            </RadioGroup>
+
+            </LinearLayout>
             <com.google.android.material.button.MaterialButton
                 android:layout_gravity="center"
                 android:id="@+id/material_button"
