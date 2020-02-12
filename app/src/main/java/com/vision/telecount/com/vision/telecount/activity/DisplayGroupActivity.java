@@ -6,13 +6,13 @@ import android.os.Bundle;
 
 import com.vision.telecount.R;
 
-public class GroupActivity extends AppCompatActivity {
+public class DisplayGroupActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register);
-        setTitle("Mes événements");
+        setTitle("Titre de l'Evenement");
 
     }
 }
