@@ -20,7 +20,7 @@ public class AddPayementActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.addgroup);
+        setContentView(R.layout.addpayement);
 
 
     }
