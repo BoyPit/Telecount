@@ -31,7 +31,6 @@ public class MainActivity extends AppCompatActivity implements LogFragment.OnFra
 
     ArrayList<User> users = new ArrayList<>();
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
