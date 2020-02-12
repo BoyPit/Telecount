@@ -54,14 +54,21 @@ public class GroupActivity extends AppCompatActivity {
 
         setContentView(R.layout.group);
         setTitle("Mes événements");
+        Intent intent = getIntent();
+        LinearLayout mainL;
+
+        if(intent != null && intent.getExtras() != null && intent.getExtras().get("users") != null) {
+            users = (ArrayList<User>) intent.getExtras().get("users");
+            User currentUser = (User) intent.getExtras().get("currentUser");
+            GroupCard listAdapter = new GroupCard(this, currentUser.getGroups());
+
+            list = (ListView) findViewById(R.id.list);
+
+            list.setAdapter(listAdapter);
+        }
 
 
 
-        GroupCard listAdapter = new GroupCard(this, user.getGroups());
-
-        list = (ListView) findViewById(R.id.list);
-
-        list.setAdapter(listAdapter);
     /*    list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
@@ -71,8 +78,7 @@ public class GroupActivity extends AppCompatActivity {
         });*/
 
 
-        Intent intent = getIntent();
-        LinearLayout mainL;
+
 
 
      /*   MaterialCardView crd =    (MaterialCardView) findViewById(R.id.card1);
@@ -96,10 +102,6 @@ public class GroupActivity extends AppCompatActivity {
             }
         });
 
-        if(intent != null && intent.getExtras() != null && intent.getExtras().get("users") != null) {
-            users = (ArrayList<User>) intent.getExtras().get("users");
 
-
-        }
     }
 }
