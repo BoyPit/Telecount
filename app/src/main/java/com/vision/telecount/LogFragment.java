@@ -39,7 +39,7 @@ public class LogFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private ArrayList<User> users = new ArrayList<>();
+    private ArrayList<User> users;
 
     private OnFragmentInteractionListener mListener;
 
@@ -91,11 +91,10 @@ public class LogFragment extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*
+                Log.d("nbr users", Integer.toString(users.size()));
                 Intent intent = new Intent(getActivity().getBaseContext(), GroupActivity.class);
                 intent.putExtra("users", (Serializable) users);
                 getActivity().startActivity(intent);
-                */
             }
         });
 
@@ -139,5 +138,13 @@ public class LogFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    public ArrayList<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(ArrayList<User> users) {
+        this.users = users;
     }
 }

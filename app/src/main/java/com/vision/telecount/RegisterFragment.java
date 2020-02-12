@@ -8,6 +8,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.viewpager.widget.ViewPager;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -43,7 +44,7 @@ public class RegisterFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private ArrayList<User> users = new ArrayList<>();
+    private ArrayList<User> users;
 
     private OnFragmentInteractionListener mListener;
 
@@ -108,7 +109,7 @@ public class RegisterFragment extends Fragment {
                 String firstName = firstNameLayout.getEditText().getText().toString();
                 String lastName = lastNameLayout.getEditText().getText().toString();
 
-                User newUser = new User(email, password, firstName, lastName, new ArrayList<Group>());
+                User newUser = new User(email, password, lastName, firstName, new ArrayList<Group>());
                 users.add(newUser);
 
                 emailLayout.getEditText().setText("");
@@ -117,8 +118,16 @@ public class RegisterFragment extends Fragment {
                 lastNameLayout.getEditText().setText("");
 
                 /*
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("users", users);
+
+                ViewPager viewPager = (ViewPager) view.findViewById(R.id.pager);
+
+                Fragment logFragment = getActivity().getSupportFragmentManager().getFragments().get(0);
+                logFragment.setArguments(bundle);
+
                 Intent intent = new Intent(getActivity().getBaseContext(), MainActivity.class);
-                intent.putExtra("users", (Serializable) users);
+                intent.putExtra("users", users);
                 startActivity(intent);
                 */
             }
@@ -164,5 +173,13 @@ public class RegisterFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    public ArrayList<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(ArrayList<User> users) {
+        this.users = users;
     }
 }
