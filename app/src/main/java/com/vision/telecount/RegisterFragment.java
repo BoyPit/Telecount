@@ -1,6 +1,8 @@
 package com.vision.telecount;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -46,6 +48,8 @@ public class RegisterFragment extends Fragment {
 
     private ArrayList<User> users;
 
+    private AlertDialog.Builder alert;
+
     private OnFragmentInteractionListener mListener;
 
     public RegisterFragment() {
@@ -68,6 +72,19 @@ public class RegisterFragment extends Fragment {
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        alert = new AlertDialog.Builder(getActivity());
+        alert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                dialog.dismiss();
+            }
+        });
+        alert.setCancelable(false);
     }
 
     @Override
@@ -97,25 +114,50 @@ public class RegisterFragment extends Fragment {
         final TextInputLayout firstNameLayout = (TextInputLayout)rootView.findViewById(R.id.first_name);
         final TextInputLayout lastNameLayout = (TextInputLayout)rootView.findViewById(R.id.last_name);
 
-
         // Bouton de connexion de l'utilisateur
         Button button = (Button) rootView.findViewById(R.id.material_button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 // Ajout du nouvel utilisateur
-                String email = emailLayout.getEditText().getText().toString();
+
+                boolean alreadyExists = false;
+
                 String password = passwordLayout.getEditText().getText().toString();
                 String firstName = firstNameLayout.getEditText().getText().toString();
                 String lastName = lastNameLayout.getEditText().getText().toString();
+                String email = emailLayout.getEditText().getText().toString();
 
-                User newUser = new User(email, password, lastName, firstName, new ArrayList<Group>());
-                users.add(newUser);
+                if(password.isEmpty() || firstName.isEmpty() || lastName.isEmpty() || email.isEmpty()){
+                    alert.setMessage("Aucun champ ne doit rester vide.\n");
+                    alert.create().show();
+                }else {
 
-                emailLayout.getEditText().setText("");
-                passwordLayout.getEditText().setText("");
-                firstNameLayout.getEditText().setText("");
-                lastNameLayout.getEditText().setText("");
+                    for (User u : users) {
+                        if (u.getEmail().equals(email)) {
+                            alreadyExists = true;
+                            break;
+                        }
+                    }
+
+                    if (!alreadyExists) {
+
+                        User newUser = new User(email, password, lastName, firstName, new ArrayList<Group>());
+                        users.add(newUser);
+
+                        emailLayout.getEditText().setText("");
+                        passwordLayout.getEditText().setText("");
+                        firstNameLayout.getEditText().setText("");
+                        lastNameLayout.getEditText().setText("");
+                        alert.setMessage("Votre compte a bien été créé.\n");
+                        alert.create().show();
+                    }else{
+                        alert.setMessage("Un compte avec cet e-mail existe déjà.\n");
+                        alert.create().show();
+                    }
+                }
+
 
                 /*
                 Bundle bundle = new Bundle();

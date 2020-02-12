@@ -1,6 +1,8 @@
 package com.vision.telecount;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -41,6 +43,8 @@ public class LogFragment extends Fragment {
 
     private ArrayList<User> users;
 
+    private AlertDialog.Builder alert;
+
     private OnFragmentInteractionListener mListener;
 
     public LogFragment() {
@@ -66,6 +70,20 @@ public class LogFragment extends Fragment {
     }
 
     @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        alert = new AlertDialog.Builder(getActivity());
+        alert.setMessage("Erreur ! \n\nE-mail ou mot de passe incorrect.\n");
+        alert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                dialog.dismiss();
+            }
+        });
+        alert.setCancelable(false);
+    }
+
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
@@ -79,22 +97,33 @@ public class LogFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_log, container, false);
 
-        // Récupération des données via Intent
-        /*
-        if(getArguments() != null && getArguments().getSerializable("users") != null) {
-            users = (ArrayList<User>) getArguments().getSerializable("users");
-        }
-        */
+        final TextInputLayout emailLayout = (TextInputLayout)rootView.findViewById(R.id.email);
+        final TextInputLayout passwordLayout = (TextInputLayout)rootView.findViewById(R.id.password);
 
         // Bouton de connexion de l'utilisateur
         Button button = (Button) rootView.findViewById(R.id.material_button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("nbr users", Integer.toString(users.size()));
-                Intent intent = new Intent(getActivity().getBaseContext(), GroupActivity.class);
-                intent.putExtra("users", (Serializable) users);
-                getActivity().startActivity(intent);
+
+                boolean notFound = true;
+
+                String email = emailLayout.getEditText().getText().toString();
+                String password = passwordLayout.getEditText().getText().toString();
+
+                for(User u : users){
+                    if(u.getEmail().equals(email) && u.getPassword().equals(password)){
+                        Intent intent = new Intent(getActivity().getBaseContext(), GroupActivity.class);
+                        intent.putExtra("users", (Serializable) users);
+                        User currentUser = u;
+                        intent.putExtra("currentUser", currentUser);
+                        getActivity().startActivity(intent);
+                        notFound = false;
+                    }
+                }
+                if(notFound) {
+                    alert.create().show();
+                }
             }
         });
 
