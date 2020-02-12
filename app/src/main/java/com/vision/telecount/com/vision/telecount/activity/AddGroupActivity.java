@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ListView;
@@ -58,6 +59,12 @@ public class AddGroupActivity extends AppCompatActivity {
         list = (ListView) findViewById(R.id.list);
 
         list.setAdapter(listUser);
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+            }
+        });
         // Bouton de connexion de l'utilisateur
         Button button = (Button) findViewById(R.id.material_button);
         button.setOnClickListener(new View.OnClickListener() {
