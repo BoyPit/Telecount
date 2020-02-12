@@ -2,6 +2,7 @@ package com.vision.telecount.com.vision.telecount.entity;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -10,7 +11,7 @@ public class User implements Serializable {
     private String password;
     private String lastName;
     private String firstName;
-    private List<Group> groups;
+    private ArrayList<Group> groups;
 
     public User(){
         this.email = "";
@@ -20,7 +21,7 @@ public class User implements Serializable {
         this.groups = new ArrayList<>();
     }
 
-    public User(String email, String password, String lastName, String firstName, List<Group> groups) {
+    public User(String email, String password, String lastName, String firstName, ArrayList<Group> groups) {
         this.email = email;
         this.password = password;
         this.lastName = lastName;
@@ -66,11 +67,11 @@ public class User implements Serializable {
         this.firstName = firstName;
     }
 
-    public List<Group> getGroups() {
+    public ArrayList<Group> getGroups() {
         return groups;
     }
 
-    public void setGroups(List<Group> groups) {
+    public void setGroups(ArrayList<Group> groups) {
         this.groups = groups;
     }
 

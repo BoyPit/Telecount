@@ -36,9 +36,9 @@ public class MainActivity extends AppCompatActivity implements LogFragment.OnFra
     protected void onCreate(Bundle savedInstanceState) {
 
         // Creation auto
-        Group g1 = new Group("Groupe 1", 1000, new ArrayList<User>(), new ArrayList<Payment>(), "Description  du premier groupe de paiement.");
-        Group g2 = new Group("Groupe 2", 2000, new ArrayList<User>(), new ArrayList<Payment>(), "Description  du deuxieme groupe de paiement.");
-        Group g3 = new Group("Groupe 3", 3000, new ArrayList<User>(), new ArrayList<Payment>(), "Description  du troisieme groupe de paiement.");
+        Group g1 = new Group("Groupe 1", "Description  du premier groupe de paiement.", 1000, new ArrayList<User>(), new ArrayList<Payment>());
+        Group g2 = new Group("Groupe 2", "Description  du deuxieme groupe de paiement.", 2000, new ArrayList<User>(), new ArrayList<Payment>());
+        Group g3 = new Group("Groupe 3", "Description  du troisieme groupe de paiement.", 3000, new ArrayList<User>(), new ArrayList<Payment>());
 
         User u1 = new User("yann.moulaire@gmail.com", "password", "Moulaire", "Yann", new ArrayList<Group>());
         User u2 = new User("arthur.pinier@gmail.com", "password", "Pinier", "Arthur", new ArrayList<Group>());

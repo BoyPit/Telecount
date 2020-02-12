@@ -20,12 +20,12 @@ public class Group implements Serializable {
         this.description = "";
     }
 
-    public Group(String label , int fund, List<User> users, List<Payment> payments, String description) {
+    public Group(String label, String description, int fund, List<User> users, List<Payment> payments) {
         this.label = label;
+        this.description = description;
         this.fund = fund;
         this.users = users;
         this.payments = payments;
-        this.description = description;
     }
 
     public void addUser(User u){
