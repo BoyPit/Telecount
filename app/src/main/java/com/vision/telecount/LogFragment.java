@@ -1,14 +1,24 @@
 package com.vision.telecount;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+
+import com.google.android.material.textfield.TextInputLayout;
+import com.vision.telecount.com.vision.telecount.activity.GroupActivity;
+import com.vision.telecount.com.vision.telecount.entity.User;
+
+import java.io.Serializable;
+import java.util.ArrayList;
 
 
 /**
@@ -28,6 +38,8 @@ public class LogFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private ArrayList<User> users;
 
     private OnFragmentInteractionListener mListener;
 
@@ -66,6 +78,25 @@ public class LogFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_log, container, false);
+
+        // Récupération des données via Intent
+        /*
+        if(getArguments() != null && getArguments().getSerializable("users") != null) {
+            users = (ArrayList<User>) getArguments().getSerializable("users");
+        }
+        */
+
+        // Bouton de connexion de l'utilisateur
+        Button button = (Button) rootView.findViewById(R.id.material_button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d("nbr users", Integer.toString(users.size()));
+                Intent intent = new Intent(getActivity().getBaseContext(), GroupActivity.class);
+                intent.putExtra("users", (Serializable) users);
+                getActivity().startActivity(intent);
+            }
+        });
 
         return rootView;
     }
@@ -107,5 +138,13 @@ public class LogFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    public ArrayList<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(ArrayList<User> users) {
+        this.users = users;
     }
 }
