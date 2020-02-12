@@ -70,22 +70,11 @@
                 android:layout_margin="10dp"
 
                 android:orientation="vertical">
-                <CheckBox
-                    android:id="@+id/first"
-
+                <ListView
+                    android:id="@+id/list"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Yann Moulaire"/>
-                <CheckBox
-                    android:id="@+id/second"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Theo Dupuis"/>
-                <CheckBox
-                    android:id="@+id/third"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Arthur Pinier-Rafer"/>
+                    android:layout_height="wrap_content" >
+                </ListView>
 
             </LinearLayout>
             <com.google.android.material.button.MaterialButton
