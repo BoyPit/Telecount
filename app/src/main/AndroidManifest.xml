@@ -35,6 +35,10 @@
             >
 
         </activity>
+        <activity android:name=".com.vision.telecount.activity.AddPayementActivity" android:windowSoftInputMode="adjustPan|adjustResize"
+            >
+
+        </activity>
     </application>
 
 </manifest>

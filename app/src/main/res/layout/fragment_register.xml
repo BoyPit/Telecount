@@ -109,6 +109,7 @@
 
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
+                android:inputType="textPassword"
                 android:hint="Password"
 
                 app:startIconCheckable="true"
@@ -116,6 +117,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
+                    android:inputType="textPassword"
                     android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
 

@@ -69,13 +69,15 @@ public class GroupActivity extends AppCompatActivity {
 
 
 
-    /*    list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+       list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                Toast.makeText(GroupActivity.this, "You Clicked at " + user.getGroups().get(position), Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(GroupActivity.this, DisplayGroupActivity.class));
+
+                // Toast.makeText(GroupActivity.this, "You Clicked at " + user.getGroups().get(position), Toast.LENGTH_SHORT).show();
             }
-        });*/
+        });
 
 
 
