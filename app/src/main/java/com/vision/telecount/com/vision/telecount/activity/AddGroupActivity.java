@@ -25,6 +25,8 @@ import java.util.ArrayList;
 public class AddGroupActivity extends AppCompatActivity {
     ListView list;
     private ArrayList<User> users;
+    private User currentUser;
+    private ArrayList<User> groupUsers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,7 @@ public class AddGroupActivity extends AppCompatActivity {
 
         if(intent != null && intent.getExtras() != null && intent.getExtras().get("users") != null) {
             users = (ArrayList<User>) intent.getExtras().get("users");
+            currentUser = (User) intent.getExtras().get("currentUser");
         }
         else
         {
@@ -53,6 +56,11 @@ public class AddGroupActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
+                if(((CheckBox)view.findViewById(R.id.usrcb)).isChecked()){
+                    groupUsers.add(users.get(position));
+                }else {
+                    groupUsers.remove(users.get(position));
+                }
             }
         });
         // Bouton de connexion de l'utilisateur
@@ -65,7 +73,7 @@ public class AddGroupActivity extends AppCompatActivity {
                 String description = descriptionLayout.getEditText().getText().toString();
 
                 if(!label.isEmpty()){
-                    Group group = new Group(label, description, 0, new ArrayList<User>(), new ArrayList<Payment>());
+                    Group group = new Group(label, description, 0, groupUsers, new ArrayList<Payment>());
                 }else{
 
                 }
