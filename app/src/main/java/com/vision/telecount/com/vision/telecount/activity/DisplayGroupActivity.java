@@ -11,7 +11,7 @@ public class DisplayGroupActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.register);
+        setContentView(R.layout.displaygroup);
         setTitle("Titre de l'Evenement");
 
     }
