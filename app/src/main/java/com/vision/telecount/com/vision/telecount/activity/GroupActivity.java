@@ -40,6 +40,7 @@ public class GroupActivity extends AppCompatActivity {
     ListView list;
 
     private ArrayList<User> users = new ArrayList<>();
+    private User currentUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +60,7 @@ public class GroupActivity extends AppCompatActivity {
 
         if(intent != null && intent.getExtras() != null && intent.getExtras().get("users") != null) {
             users = (ArrayList<User>) intent.getExtras().get("users");
-            User currentUser = (User) intent.getExtras().get("currentUser");
+            currentUser = (User) intent.getExtras().get("currentUser");
             GroupCard listAdapter = new GroupCard(this, currentUser.getGroups());
 
             list = (ListView) findViewById(R.id.list);
@@ -101,6 +102,7 @@ public class GroupActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getBaseContext(), AddGroupActivity.class);
                 intent.putExtra("users", (Serializable) users);
+                intent.putExtra("currentUser", currentUser);
                 startActivity(intent);
 
             }
