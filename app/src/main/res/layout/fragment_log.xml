@@ -67,7 +67,7 @@
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
+            android:inputType="textPassword"
             android:layout_margin="20dp"
             app:startIconCheckable="true"
             app:startIconDrawable="@drawable/ic_lock_outline_white_24dp"
@@ -77,6 +77,8 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
+                android:inputType="textPassword"
+
                 android:layout_height="wrap_content"/>
 
             <GridLayout

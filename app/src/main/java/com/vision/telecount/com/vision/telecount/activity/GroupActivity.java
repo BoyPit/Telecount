@@ -54,25 +54,33 @@ public class GroupActivity extends AppCompatActivity {
 
         setContentView(R.layout.group);
         setTitle("Mes événements");
+        Intent intent = getIntent();
+        LinearLayout mainL;
+
+        if(intent != null && intent.getExtras() != null && intent.getExtras().get("users") != null) {
+            users = (ArrayList<User>) intent.getExtras().get("users");
+            User currentUser = (User) intent.getExtras().get("currentUser");
+            GroupCard listAdapter = new GroupCard(this, currentUser.getGroups());
+
+            list = (ListView) findViewById(R.id.list);
+
+            list.setAdapter(listAdapter);
+        }
 
 
 
-        GroupCard listAdapter = new GroupCard(this, user.getGroups());
-
-        list = (ListView) findViewById(R.id.list);
-
-        list.setAdapter(listAdapter);
-    /*    list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+       list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                Toast.makeText(GroupActivity.this, "You Clicked at " + user.getGroups().get(position), Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(GroupActivity.this, DisplayGroupActivity.class));
+
+                // Toast.makeText(GroupActivity.this, "You Clicked at " + user.getGroups().get(position), Toast.LENGTH_SHORT).show();
             }
-        });*/
+        });
 
 
-        Intent intent = getIntent();
-        LinearLayout mainL;
+
 
 
      /*   MaterialCardView crd =    (MaterialCardView) findViewById(R.id.card1);
@@ -91,15 +99,13 @@ public class GroupActivity extends AppCompatActivity {
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(GroupActivity.this, AddGroupActivity.class));
+                Intent intent = new Intent(getBaseContext(), AddGroupActivity.class);
+                intent.putExtra("users", (Serializable) users);
+                startActivity(intent);
 
             }
         });
 
-        if(intent != null && intent.getExtras() != null && intent.getExtras().get("users") != null) {
-            users = (ArrayList<User>) intent.getExtras().get("users");
 
-
-        }
     }
 }
