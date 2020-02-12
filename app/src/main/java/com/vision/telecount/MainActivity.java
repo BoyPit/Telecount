@@ -10,6 +10,7 @@ import androidx.viewpager.widget.ViewPager;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Window;
 
 import com.google.android.material.tabs.TabLayout;
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity implements LogFragment.OnFra
             users = (ArrayList<User>) intent.getExtras().get("users");
         }
 
+        /*
         Bundle bundle = new Bundle();
         bundle.putSerializable("users", users);
 
@@ -53,7 +55,7 @@ public class MainActivity extends AppCompatActivity implements LogFragment.OnFra
 
         RegisterFragment registerFragment = new RegisterFragment();
         registerFragment.setArguments(bundle);
-
+        */
     }
 
     private void setViewPager(ViewPager viewPager) {

@@ -6,7 +6,10 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +20,7 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.vision.telecount.com.vision.telecount.entity.Group;
 import com.vision.telecount.com.vision.telecount.entity.User;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -81,9 +85,11 @@ public class RegisterFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_register, container, false);
 
         // Récupération des données via Intent
-        if(getArguments() != null) {
-            users = (ArrayList<User>) getArguments().get("users");
+        /*
+        if(getArguments() != null && getArguments().getSerializable("users") != null) {
+            users = (ArrayList<User>) getArguments().getSerializable("users");
         }
+         */
 
         final TextInputLayout emailLayout = (TextInputLayout)rootView.findViewById(R.id.email);
         final TextInputLayout passwordLayout = (TextInputLayout)rootView.findViewById(R.id.password);
@@ -105,9 +111,16 @@ public class RegisterFragment extends Fragment {
                 User newUser = new User(email, password, firstName, lastName, new ArrayList<Group>());
                 users.add(newUser);
 
+                emailLayout.getEditText().setText("");
+                passwordLayout.getEditText().setText("");
+                firstNameLayout.getEditText().setText("");
+                lastNameLayout.getEditText().setText("");
+
+                /*
                 Intent intent = new Intent(getActivity().getBaseContext(), MainActivity.class);
-                intent.putExtra("users", users);
-                getActivity().startActivity(intent);
+                intent.putExtra("users", (Serializable) users);
+                startActivity(intent);
+                */
             }
         });
 

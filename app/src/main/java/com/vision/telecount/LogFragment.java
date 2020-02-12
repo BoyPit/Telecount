@@ -7,14 +7,17 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.google.android.material.textfield.TextInputLayout;
 import com.vision.telecount.com.vision.telecount.activity.GroupActivity;
 import com.vision.telecount.com.vision.telecount.entity.User;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
@@ -77,18 +80,22 @@ public class LogFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_log, container, false);
 
         // Récupération des données via Intent
-        if(getArguments() != null) {
-            users = (ArrayList<User>) getArguments().get("users");
+        /*
+        if(getArguments() != null && getArguments().getSerializable("users") != null) {
+            users = (ArrayList<User>) getArguments().getSerializable("users");
         }
+        */
 
         // Bouton de connexion de l'utilisateur
         Button button = (Button) rootView.findViewById(R.id.material_button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                /*
                 Intent intent = new Intent(getActivity().getBaseContext(), GroupActivity.class);
-                intent.putExtra("users", users);
+                intent.putExtra("users", (Serializable) users);
                 getActivity().startActivity(intent);
+                */
             }
         });
 
