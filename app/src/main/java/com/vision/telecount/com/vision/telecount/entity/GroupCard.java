@@ -14,25 +14,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class GroupCard extends ArrayAdapter<String> {
-    private final Activity context;
-    private final ArrayList<Group> group;
+public class GroupCard extends ArrayAdapter<Group> {
+   // private final Activity context;
+    //private final ArrayList<Group> group;
 
     public GroupCard(Activity context,
                      ArrayList<Group> group) {
-        super(context, R.layout.element);
-        this.context = context;
-        this.group = group;
+        super(context,0, group);
+      //  this.context = context;
+       // this.group = group;
     }
     @Override
     public View getView(int position, View view, ViewGroup parent) {
-        LayoutInflater inflater = context.getLayoutInflater();
-        View rowView= inflater.inflate(R.layout.element, null, true);
-        TextView txtTitle = (TextView) rowView.findViewById(R.id.txt);
-        TextView txtDesc = (TextView) rowView.findViewById(R.id.txt2);
+       // LayoutInflater inflater = context.getLayoutInflater();
+        Group group = getItem(position);
 
-        txtTitle.setText(group.get(position).getLabel());
-        txtTitle.setText(group.get(position).getDescription());
-        return rowView;
+        if (view == null) {
+            view = LayoutInflater.from(getContext()).inflate(R.layout.element, parent, false);
+        }
+       // View rowView= inflater.inflate(R.layout.element, null, true);
+        TextView txtTitle = (TextView) view.findViewById(R.id.txt);
+        TextView txtDesc = (TextView) view.findViewById(R.id.txt2);
+
+        txtTitle.setText(group.getLabel());
+        txtDesc.setText(group.getDescription());
+        return view;
     }
 }

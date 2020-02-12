@@ -41,15 +41,23 @@ public class GroupActivity extends AppCompatActivity {
 
         setContentView(R.layout.group);
         setTitle("Mes événements");
-        GroupCard listAdapter = new GroupCard(GroupActivity.this, user.getGroups());
+
+
+
+        GroupCard listAdapter = new GroupCard(this, user.getGroups());
+
         list = (ListView) findViewById(R.id.list);
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+        list.setAdapter(listAdapter);
+    /*    list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
                 Toast.makeText(GroupActivity.this, "You Clicked at " + user.getGroups().get(position), Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
+
+
         Intent intent = getIntent();
 
         if(intent != null && intent.getExtras() != null && intent.getExtras().get("users") != null) {
